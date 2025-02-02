@@ -91,9 +91,6 @@ export default function StageNav(props: {
           {(item) => (
             <div
               class="overlay"
-              onClick={() => {
-                handleClick(item)
-              }}
               onFocus={() => props.setHoverText(item)}
               onMouseOver={() => props.setHoverText(item)}
               tabIndex="-1"

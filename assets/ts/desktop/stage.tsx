@@ -134,10 +134,6 @@ export default function Stage(props: {
     }
   }
 
-  const onClick: () => void = () => {
-    !props.isAnimating() && props.setIsOpen(true)
-  }
-
   const setPosition: () => void = () => {
     if (!mounted) return
     if (imgs.length === 0) return
@@ -453,7 +449,7 @@ export default function Stage(props: {
 
   return (
     <>
-      <div class="stage" onClick={onClick} onKeyDown={onClick}>
+      <div class="stage">
         <For each={props.ijs}>
           {(ij, i) => (
             <img

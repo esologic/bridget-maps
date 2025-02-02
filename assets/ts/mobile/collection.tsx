@@ -45,13 +45,6 @@ export default function Collection(props: {
   // states
   const [state, { setIndex }] = useState()
 
-  // helper functions
-  const handleClick: (i: number) => void = (i) => {
-    if (props.isAnimating()) return
-    setIndex(i)
-    props.setIsOpen(true)
-  }
-
   const scrollToActive: () => void = () => {
     imgs[state().index].scrollIntoView({ behavior: 'auto', block: 'center' })
   }
@@ -115,14 +108,9 @@ export default function Collection(props: {
               width={ij.loImgW}
               data-src={ij.loUrl}
               alt={ij.alt}
+              // Images are scattered further around the screen
               style={{
-                transform: `translate3d(${i() !== 0 ? getRandom(-25, 25) : 0}%, ${i() !== 0 ? getRandom(-35, 35) : 0}%, 0)`
-              }}
-              onClick={() => {
-                handleClick(i())
-              }}
-              onKeyDown={() => {
-                handleClick(i())
+                transform: `translate3d(${i() !== 0 ? getRandom(-25, 25) : 0}%, ${i() !== 0 ? getRandom(-130, 130) : 0}%, 0)`
               }}
             />
           )}

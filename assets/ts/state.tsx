@@ -41,13 +41,11 @@ export type StateContextType = readonly [
  * constants
  */
 
+// Threshold is hard coaded in `partials/nav.html`
 const thresholds: ThresholdRelated[] = [
-  { threshold: 20, trailLength: 20 },
-  { threshold: 40, trailLength: 10 },
-  { threshold: 80, trailLength: 5 },
-  { threshold: 140, trailLength: 5 },
-  { threshold: 200, trailLength: 5 }
+  { threshold: 60, trailLength: 20 },
 ]
+
 const makeStateContext: (
   state: Accessor<State>,
   setState: Setter<State>
@@ -109,12 +107,12 @@ export function StateProvider(props: {
   children?: JSX.Element
   length: number
 }): JSX.Element {
+  // Directly use the hardcoded threshold of 60
   const defaultState: State = {
     index: -1,
-    // eslint-disable-next-line solid/reactivity
     length: props.length,
-    threshold: thresholds[getThresholdSessionIndex()].threshold,
-    trailLength: thresholds[getThresholdSessionIndex()].trailLength
+    threshold: thresholds[0].threshold,  // Always use the first threshold (60)
+    trailLength: thresholds[0].trailLength,  // Corresponding trailLength for threshold 60
   }
 
   const [state, setState] = createSignal(defaultState)

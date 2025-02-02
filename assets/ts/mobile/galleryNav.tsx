@@ -18,11 +18,6 @@ export default function GalleryNav(props: {
   const indexValue = createMemo(() => expand(state().index + 1))
   const indexLength = createMemo(() => expand(state().length))
 
-  const onClick: () => void = () => {
-    if (props.isAnimating()) return
-    props.setIsOpen(false)
-  }
-
   return (
     <>
       <div class="nav">
@@ -37,7 +32,7 @@ export default function GalleryNav(props: {
           <span class="num">{indexLength()[2]}</span>
           <span class="num">{indexLength()[3]}</span>
         </div>
-        <div onClick={onClick} onKeyDown={onClick}>
+        <div>
           {capitalizeFirstLetter(props.closeText)}
         </div>
       </div>
